@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { peek } from './peek';
   import isaac from '../../public/isaac.webp';
   import pc from '../../public/purple-cake.webp';
   import { randInt } from './rand';
@@ -9,6 +10,12 @@
     'left-0 -translate-x-2/3 rotate-90',
     'right-0 translate-x-2/3 -rotate-90'
   ]
+  const peekInfo = [
+    {side: 'b'},
+    {side: 't'},
+    {side: 'l'},
+    {side: 'r'},
+  ] as const;
   let showBoost = false;
   let boostTimer = randInt(20, 10);
   let randSide = 0;
@@ -42,5 +49,5 @@
 </script>
 <div class="flex flex-col items-center justify-center h-full p-8 overflow-hidden relative">
   <button class="animate-wiggle" on:click><img src={isaac} alt="Isaac's Face"></button>
-  {#if showBoost}<button type="button" class="absolute {sides[randSide]}" on:click={handleBoost}><img alt="Purple Cake" src={pc}></button>{/if}
+  {#if showBoost}<button transition:peek={peekInfo[randSide]} type="button" class="absolute {sides[randSide]}" on:click={handleBoost}><img alt="Purple Cake" src={pc}></button>{/if}
 </div>
