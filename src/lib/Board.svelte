@@ -8,5 +8,6 @@
 <style>
 button {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 </style>
