@@ -10,3 +10,10 @@ import Game from './lib/Game.svelte';
 	<Game />
 	<Footer />
 </main>
+
+<style global>
+	button {
+		-webkit-tap-highlight-color: transparent;
+		touch-action: manipulation;
+	}
+	</style>
