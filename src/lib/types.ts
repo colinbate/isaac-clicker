@@ -1,4 +1,4 @@
-export type BonusUnit = 'second' | 'click';
+export type BonusUnit = 'second' | 'click' | 'boost';
 
 export interface Bonus {
   id: string;

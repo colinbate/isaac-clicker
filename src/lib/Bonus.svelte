@@ -2,7 +2,10 @@
   import Icon from "./Icon.svelte";
   import { addBonus, score } from "./score";
   import type { Bonus } from "./types";
-  const cfmt = Intl.NumberFormat('en-us');
+  const cfmt = Intl.NumberFormat('en-us', {
+    notation: 'compact',
+    compactDisplay: 'short',
+  });
   export let bonus: Bonus;
   $: disabled = $score < bonus.cost;
 </script>
