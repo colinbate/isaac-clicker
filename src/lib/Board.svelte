@@ -1,7 +1,7 @@
 <script lang="ts">
   import { peek } from './peek';
-  import isaac from '../../public/isaac.webp';
-  import pc from '../../public/purple-cake.webp';
+  import isaac from '../isaac.webp';
+  import pc from '../purple-cake.webp';
   import { randInt } from './rand';
   import { addBonus, counter } from './score';
   const sides = [
@@ -19,7 +19,7 @@
   let showBoost = false;
   let boostTimer = randInt(20, 10);
   let randSide = 0;
-  let boostTimeout: number;
+  let boostTimeout: NodeJS.Timeout;
   const boost = { label: 'Boost', id: 'boost', cost: 0, amount: 0, unit: 'boost' } as const;
 
 
@@ -32,7 +32,7 @@
   function handleBoost() {
     if (boostTimeout) {
       clearTimeout(boostTimeout);
-      boostTimeout = 0;
+      boostTimeout = null;
     }
     addBonus(boost);
     resetBoost();

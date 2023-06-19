@@ -6,7 +6,7 @@ interface Counter extends Readable<number> {
 
 export function createCounter(interval: number): Counter {
   const internal = writable(0);
-  let timer: number;
+  let timer: NodeJS.Timer;
   const reset = () => {
     internal.set(0);
     if (!timer) {
