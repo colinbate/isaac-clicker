@@ -7,16 +7,24 @@ interface PeekParams {
   side?: 'b' | 't' | 'l' | 'r';
 }
 
+const ROTATE = {
+  b: 0,
+  t: 180,
+  l: 90,
+  r: -90,
+};
+
 export function peek(
 	node: Element,
 	{ duration = 400, easing = cubicOut, side = 'b' }: PeekParams = {}
 ): TransitionConfig {
-	const style = getComputedStyle(node);
-	const transform = style.transform === 'none' ? '' : style.transform;
+  const sign = side === 't' || side === 'l' ? -1 : 1;
+  const axis = side === 't' || side === 'b' ? 'Y' : 'X';
+  const rotate = ROTATE[side]; 
 	return {
 		delay: 0,
 		duration,
 		easing,
-		css: (t, u) => `transform: ${transform} translateY(${((1 - t) * 33) + 67}%)`,
+		css: (t) => `transform: translate${axis}(${sign * (((1 - t) * 40) + 67)}%) rotate(${rotate}deg)`,  
 	};
 }
