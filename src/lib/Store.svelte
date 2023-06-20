@@ -4,7 +4,7 @@
   export let store: Store;
 </script>
 
-<div class="flex flex-col flex-1">
+<div class="flex flex-col flex-1 h-full">
   <ul class="flex flex-col gap-4">
     {#each store as bonus (bonus.id)}
     <Bonus {bonus} />

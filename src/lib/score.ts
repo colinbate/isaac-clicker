@@ -74,3 +74,5 @@ export function doSecond() {
     amounts: { ...current.amounts }
   }));
 }
+
+counter.subscribe(doSecond);
